@@ -1,21 +1,21 @@
 package org.checkout.repository;
 
-import org.checkout.models.Payment;
+import org.checkout.models.PostPaymentResponseDto;
 
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.UUID;
 
 
-public class PaymentsRepository {
+public class PaymentsRepository implements IPaymentsRepository {
 
-    private final HashMap<String, Payment> payments = new HashMap<>();
+    private final HashMap<String, PostPaymentResponseDto> payments = new HashMap<>();
 
-    public void add(Payment payment) {
-        payments.put(UUID.randomUUID().toString(), payment);
+    public void add(PostPaymentResponseDto postPaymentResponseDto) {
+        payments.put(postPaymentResponseDto.id(), postPaymentResponseDto);
     }
 
-    public Optional<Payment> get(String id) {
+    public Optional<PostPaymentResponseDto> get(String id) {
         return Optional.ofNullable(payments.get(id));
     }
 
